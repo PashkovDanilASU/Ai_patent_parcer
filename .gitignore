@@ -1,0 +1,11 @@
+*.log
+*.cache
+*.pyc
+*.swp
+*.swo
+__pycache__/
+
+venv/
+env/
+
+.env
