@@ -51,7 +51,7 @@ try:
     time.sleep(1)
 
     for i in range(page_scrolling):  # Не попадает в условие if - помочь братку
-            # Делаем дела парсим шмарсим на конкретной страничке - ТЕБЕ СЮДА ЧЕТО ДОБАВИТЬ
+        # Делаем дела парсим шмарсим на конкретной страничке - ТЕБЕ СЮДА ЧЕТО ДОБАВИТЬ
         table_ = driver.find_element(By.CLASS_NAME,
                                          "table_default")  # Класс table_default, где располагаются поля таблицы. Класс table_default находится в классе "content_flex content_flex_outer".
 
@@ -85,7 +85,6 @@ try:
         find_next_element.click()
         time.sleep(1)
 
-
     time.sleep(10)
 except Exception as _ex:
     print(_ex)
@@ -94,3 +93,4 @@ finally:
     #print(count_parcing)
     driver.close()
     driver.quit()
+
