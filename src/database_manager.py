@@ -2,6 +2,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.dialects.postgresql import insert
+from sqlalchemy import select
 
 from src.config import DB_HOST, DB_NAME, DB_PASS, DB_PORT, DB_USER
 from src.models import Patents, Logs
@@ -42,3 +43,30 @@ def insert_log(session, log):
 
     stmt = insert(Logs).values(log)
     session.execute(stmt)
+
+
+def get_all_patents(session):
+    '''
+    Взятие списка патентов из базы данных
+
+    :param session: Сессия, через которую происходит общение с БД
+    :return: list(dict)
+    '''
+
+    query = select(Patents)
+    result = session.execute(query)
+    return result.all()
+
+
+def get_patent(session, patent_id):
+    '''
+    Взятие 1 патента из базы данных
+
+    :param session: Сессия, через которую происходит общение с БД
+    :param patent_id: Id патента, который необходимо вернуть
+    :return: dict
+    '''
+
+    query = select(Patents).where(Patents.id == patent_id)
+    result = session.execute(query)
+    return result.all()

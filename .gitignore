@@ -10,3 +10,4 @@ env/
 
 .env
 testing.py
+google sheets/credentials.json
